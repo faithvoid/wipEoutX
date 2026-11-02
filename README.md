@@ -1,3 +1,13 @@
+# wipEoutX
+
+Wipeout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
+
+# Building (NXDK)
+
+- TBA
+
+Original README below.
+
 # wipEout Rewrite
 
 This is a re-implementation of the 1995 PSX game wipEout.
