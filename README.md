@@ -13,7 +13,7 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 
 # Partially working:
 - [x] Audio (slowly gets more distorted the longer the game is open)
-- [x] Hardware renderer (partial reimplementation of pbGL, works well, but has issues such as shadow flickering. Performance is perfect in 480p and pretty good in 720p)
+- [x] Hardware renderer (partial reimplementation of pbGL, works well, but performance in 720p can definitely be improved)
 
 # Not working:
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
