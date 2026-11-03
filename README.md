@@ -17,7 +17,9 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 - [x] Vibration
 
 # Untested:
-- [x] HD texture support from WipEout Phantom Edition
+- HD texture support from WipEout Phantom Edition
+- Keyboard + Mouse support (theoretically should work out of the box as inputs are handled by SDL)
+- Finishing every course in one playthrough
 
 # Building (NXDK)
 
