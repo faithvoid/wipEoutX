@@ -1,6 +1,7 @@
 # wipEoutX
 
 wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
+![](screenshots/1.png)
 
 # Working:
 - [x] Software renderer
