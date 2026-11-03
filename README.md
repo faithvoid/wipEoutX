@@ -12,14 +12,14 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 
 # Partially working:
 - [x] Audio (slowly gets more distorted the longer the game is open)
-- [x] Saving (currently saves in E:/UDATA/50530001, but doesn't include TitleImage.xbx, SaveImage.xbx or TitleMeta.xbx)
+- [x] Saving (currently saves in E:/UDATA/50530001, but doesn't yet include TitleImage.xbx or SaveImage.xbx)
+- [ ] Dynamic save icons and information depending on the last played race (ie; "Altima VII (Arial) - 5000 (WPX)", with the save icon being the last played pilot's emblem)
 - [x] Hardware renderer (partial reimplementation of pbGL, works well, but has issues such as shadow flickering. Performance is perfect in 480p and pretty good in 720p)
 
 # Not working:
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
 
 # Planned:
-- [ ] Dynamic save icons and information depending on the last played race (ie; "Altima VII (Feisar) - 5000 (WPX)", with the save icon being the last used vehicle)
 
 # Untested:
 - HD texture support from WipEout Fantomas Edition
