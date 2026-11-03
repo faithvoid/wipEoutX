@@ -20,7 +20,6 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 
 # Planned:
 - [ ] Dynamic save icons and information depending on the last played race (ie; "Altima VII (Feisar) - 5000 (WPX)", with the save icon being the last used vehicle)
-- [ ] 
 
 # Untested:
 - HD texture support from WipEout Fantomas Edition
