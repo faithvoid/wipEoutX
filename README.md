@@ -20,6 +20,7 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
 
 # Planned:
+- [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
 
 # Untested:
 - HD texture support from WipEout Fantomas Edition
