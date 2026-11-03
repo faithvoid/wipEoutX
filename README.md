@@ -1,6 +1,22 @@
 # wipEoutX
 
-Wipeout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
+wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
+
+# Working:
+- [x] Software renderer
+- [x] General gameplay
+- [x] Remapping keys
+
+# Partially working:
+- [x] Audio (slowly gets more distorted the longer the game is open)
+- [x] Saving (currently saves in E:/UDATA/50530001, but doesn't include TitleImage.xbx, SaveImage.xbx or TitleMeta.xbx)
+- [x] Hardware renderer (partial reimplementation of pbGL, works but has issues such as shadow flickering)
+
+# Not working:
+- [x] Vibration
+
+# Untested:
+- [x] HD texture support from WipEout Phantom Edition
 
 # Building (NXDK)
 
