@@ -7,6 +7,7 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 - [x] Software renderer
 - [x] General gameplay
 - [x] Remapping keys
+- [x] IGR
 
 # Partially working:
 - [x] Audio (slowly gets more distorted the longer the game is open)
