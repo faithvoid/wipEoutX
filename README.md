@@ -9,11 +9,10 @@ wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
 - [x] Remapping keys
 - [x] In-Game Reset
 - [x] Automatic 720p/480p modes depending on the max resolution of the display
+- [x] Dynamic save icons and information depending on the last played race (ie; "Altima VII (Arial) - 5000 (WPX)", with the save icon being the last played pilot's emblem)
 
 # Partially working:
 - [x] Audio (slowly gets more distorted the longer the game is open)
-- [x] Saving (currently saves in E:/UDATA/50530001, but doesn't yet include TitleImage.xbx or SaveImage.xbx)
-- [ ] Dynamic save icons and information depending on the last played race (ie; "Altima VII (Arial) - 5000 (WPX)", with the save icon being the last played pilot's emblem)
 - [x] Hardware renderer (partial reimplementation of pbGL, works well, but has issues such as shadow flickering. Performance is perfect in 480p and pretty good in 720p)
 
 # Not working:
