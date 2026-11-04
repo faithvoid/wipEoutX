@@ -16,7 +16,7 @@
 
 # Partially working:
 - [x] Audio (slowly gets more distorted the longer the game is open)
-- [x] Hardware renderer (partial reimplementation of pbGL, works well, but performance in 720p can definitely be improved)
+- [x] Hardware renderer with bilinear filtering (partial reimplementation of pbGL, works well, but performance in 720p can definitely be improved)
 
 # Not working:
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
