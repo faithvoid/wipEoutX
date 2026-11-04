@@ -1,8 +1,9 @@
 # wipEoutX
 <p align="center">
-wipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.
-![](screenshots/1.png)
-![](screenshots/2.png)
+  <em>WipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.</em>
+  <img src="screenshots/1.png" alt="" width="400" />
+  <img src="screenshots/2.png" alt="" width="400" />
+  <br>
 </p>
 
 # Working:
