@@ -8,7 +8,7 @@
 
 # Working:
 - [x] Software renderer
-- [x] General gameplay
+- [x] General gameplay (able to finish the entire game in one sitting with no major issues)
 - [x] Remapping keys
 - [x] In-Game Reset
 - [x] Automatic 720p/480p modes depending on the max resolution of the display
@@ -20,6 +20,7 @@
 
 # Not working:
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
+- [ ] Time Attack (crashes the Xbox when hovering it, possible corrupt model file or parser in the hardware renderer)
 
 # Planned:
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
@@ -27,7 +28,6 @@
 # Untested:
 - HD texture support from WipEout Fantomas Edition
 - Keyboard + Mouse support (theoretically should work out of the box as inputs are handled by SDL)
-- Finishing every course in one playthrough
 
 # Building (NXDK)
 
