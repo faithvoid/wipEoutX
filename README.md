@@ -1,6 +1,6 @@
 # wipEoutX
 <p align="center">
-  <em>WipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.</em>
+  <em>WipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.</em><b>
   <img src="screenshots/1.png" alt="" width="400" />
   <img src="screenshots/2.png" alt="" width="400" />
   <br>
