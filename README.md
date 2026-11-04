@@ -25,6 +25,9 @@
 # Planned:
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
 
+# Not Planned:
+- N/A
+
 # Untested:
 - HD texture support from WipEout Fantomas Edition
 - Keyboard + Mouse support (theoretically should work out of the box as inputs are handled by SDL)
