@@ -8,15 +8,16 @@
 
 # Working:
 - [x] Software renderer
+- [x] Modernized SDL3 backend
+- [x] Audio
 - [x] General gameplay (able to finish the entire game in one sitting with no major issues)
 - [x] Remapping keys
 - [x] In-Game Reset
 - [x] Automatic 720p/480p modes depending on the max resolution of the display
-- [x] Dynamic save icons and information depending on the last played race (ie; "Altima VII (Arial) - 5000 (WPX)", with the save icon being the last played pilot's emblem)
+- [x] Dynamic save icons and information depending on the last played race (ie; "Altima VII - 5000 (WPX)", with the save icon being the last played pilot's emblem)
 
 # Partially working:
-- [x] Audio (slowly gets more distorted the longer the game is open)
-- [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance in 720p can definitely be improved)
+- [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance can definitely be improved)
 
 # Not working:
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
@@ -24,7 +25,6 @@
 
 # Planned:
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
-- [ ] Migrate from SDL2 to SDL3 for increased performance
 
 # Not Planned:
 - N/A
