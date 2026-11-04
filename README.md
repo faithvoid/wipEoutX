@@ -3,7 +3,7 @@
   <a>WipEout (PSX) for the original Xbox using wipeout-rewrite and NXDK.</a><b>
   <img src="screenshots/1.png" alt="" /><br>
   <img src="screenshots/2.png" alt="" /><br>
-	  <em>Save data from wipEoutX, viewed in the dashboard.</em>
+	  <i>Save data from wipEoutX, viewed in the dashboard.</i>
 </p>
 
 # Working:
