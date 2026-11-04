@@ -33,6 +33,10 @@
 - HD texture support from WipEout Fantomas Edition
 - Keyboard + Mouse support (theoretically should work out of the box as inputs are handled by SDL)
 
+# Installation
+- Download and extract the latest release .zip file to your folder of choice
+- Copy your "wipEout" game data from your Playstation version of wipEout, as well the required additional files from the ATI Rage PC version's "common" folder. Game data is not provided with this port, nor will it ever be. Further installation instructions can be found below.
+
 # Building (NXDK)
 
 - TBA
