@@ -24,6 +24,7 @@
 
 # Planned:
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
+- [ ] Migrate from SDL2 to SDL3 for increased performance
 
 # Not Planned:
 - N/A
