@@ -1,196 +1,73 @@
-CC ?= gcc
-EMCC ?= emcc
-UNAME_S := $(shell uname -s)
-RENDERER ?= GL
-USE_GLX ?= false
-DEBUG ?= false
-USER_CFLAGS ?=
+.DEFAULT_GOAL := all
 
-L_FLAGS ?= -lm
-C_FLAGS ?= -Isrc/libs/ -std=gnu99 -Wall -Wno-unused-variable $(USER_CFLAGS)
+XBE_TITLE = wipEoutX
+GEN_XISO  = wipEoutX.iso
 
-ifeq ($(DEBUG), true)
-	C_FLAGS := $(C_FLAGS) -g -DVERBOSE_PRINTING
-else
-	C_FLAGS := $(C_FLAGS) -O3
-endif
+NXDK_DIR ?= $(abspath $(CURDIR)/../nxdk)
+NXDK_SDL3_DIR ?= $(abspath $(CURDIR)/../nxdk/nxdk-sdl3)
 
+OUTPUT_DIR ?= bin
 
-# Renderer ---------------------------------------------------------------------
+SRCS  = $(sort $(wildcard $(CURDIR)/src/wipeout/*.c))
+SRCS += $(addprefix $(CURDIR)/src/, \
+	input.c \
+	mem.c \
+	render_nv2a.c \
+	system.c \
+	types.c \
+	utils.c \
+	platform_xbox.c)
 
-ifeq ($(RENDERER), GL)
-	RENDERER_SRC = src/render_gl.c
-	C_FLAGS := $(C_FLAGS) -DRENDERER_GL
-else ifeq ($(RENDERER), SOFTWARE)
-	RENDERER_SRC = src/render_software.c
-	C_FLAGS := $(C_FLAGS) -DRENDERER_SOFTWARE
-else
-$(error Unknown RENDERER)
-endif
+CFLAGS += -O3 -march=pentium3
 
-ifeq ($(GL_VERSION), GLES2)
-	C_FLAGS := $(C_FLAGS) -DUSE_GLES2
-endif
+ENGINE_OBJS = $(SRCS:.c=.obj)
 
+$(ENGINE_OBJS): CFLAGS += \
+	-std=gnu99 -Wall -Wno-unused-variable \
+	-I$(CURDIR)/src/libs \
+	-I$(CURDIR)/src/xbox_compat \
+	-include $(CURDIR)/src/xbox_compat/xbox_compat.h \
+	-DXBOX_HW_RENDERER \
+	-DSTBI_WRITE_NO_STDIO \
 
+.PHONY: stage-assets
+stage-assets:
+	@mkdir -p $(OUTPUT_DIR)
+	@if [ -d $(CURDIR)/wipeout ]; then \
+		echo "[ ASSETS   ] wipeout/ -> $(OUTPUT_DIR)/wipeout"; \
+		mkdir -p $(OUTPUT_DIR)/wipeout; \
+		cp -R $(CURDIR)/wipeout/. $(OUTPUT_DIR)/wipeout/; \
+	else \
+		echo "[ ASSETS   ] no ./wipeout directory, ISO will not contain game data"; \
+	fi
 
-# macOS ------------------------------------------------------------------------
+$(GEN_XISO): stage-assets
 
-ifeq ($(UNAME_S), Darwin)
-	BREW_HOME := $(shell brew --prefix)
-	C_FLAGS := $(C_FLAGS) -x objective-c -I/opt/homebrew/include -D_THREAD_SAFE -w
-	L_FLAGS := $(L_FLAGS) -L$(BREW_HOME)/lib -framework Foundation
+include $(NXDK_DIR)/Makefile
+include $(NXDK_SDL3_DIR)/config_sdl.make
 
-	ifeq ($(RENDERER), GL)
-		L_FLAGS := $(L_FLAGS) -lGLEW -GLU -framework OpenGL
-	endif
+CFLAGS += $(SDL3_FLAGS) \
+          -DNXDK \
+          -Wall -Wextra -Wno-unused-parameter \
+          -DDRMP3_NO_SIMD -DMINIMP3_NO_SIMD \
+          -DFT2_BUILD_LIBRARY \
+          -DFT_ERR_PREFIX=FT_Err_ \
+          -I$(CURDIR)/src \
+          -I$(FREETYPE_DIR)/include \
+          -I$(SDL_TTF_DIR)/include \
+          -I$(SDL_IMAGE_DIR)/include \
+          -I$(SDL_MIXER_DIR)/include \
+          -DSDLTTF_VENDORED=1 \
+          -DSDLTTF_PLUTOSVG=0 \
+          -DSDLTTF_HARFBUZZ=0 \
+          -DSDLMIXER_VENDORED=1
 
-	L_FLAGS_SDL = -lSDL2
-	L_FLAGS_SOKOL = -framework Cocoa -framework QuartzCore -framework AudioToolbox
+CXXFLAGS += $(SDL3_FLAGS) \
+            -DNXDK \
+            -I$(FREETYPE_DIR)/include \
+            -I$(SDL_TTF_DIR)/include \
+            -I$(SDL_IMAGE_DIR)/include \
+            -I$(SDL_MIXER_DIR)/include
 
-
-# Linux ------------------------------------------------------------------------
-
-else ifeq ($(UNAME_S), Linux)
-	ifeq ($(RENDERER), GL)
-		L_FLAGS := $(L_FLAGS) -lGLEW
-
-		# Prefer modern GLVND instead of legacy X11-only GLX
-		ifeq ($(USE_GLX), true)
-			L_FLAGS := $(L_FLAGS) -lGL
-		else
-			L_FLAGS := $(L_FLAGS) -lOpenGL
-		endif
-	endif
-
-	L_FLAGS_SDL = -lSDL2
-	L_FLAGS_SOKOL = -lX11 -lXcursor -pthread -lXi -ldl -lasound
-
-
-# Windows MSYS ------------------------------------------------------------------
-else ifeq ($(shell uname -o), Msys)
-	ifeq ($(RENDERER), GL)
-		L_FLAGS := $(L_FLAGS) -lglew32 -lopengl32
-	endif
-
-	C_FLAGS := $(C_FLAGS) -DSDL_MAIN_HANDLED
-	L_FLAGS_SDL := $(shell sdl2-config --libs)
-	L_FLAGS_SOKOL = --pthread -lgdi32 -lole32
-
-
-# Windows NON-MSYS ---------------------------------------------------------------
-else ifeq ($(OS), Windows_NT)
-	$(error TODO: FLAGS for windows have not been set up. Please modify this makefile and send a PR!)
-
-else
-$(error Unknown environment)
-endif
-
-
-
-# Source files -----------------------------------------------------------------
-
-TARGET_NATIVE ?= wipegame
-BUILD_DIR = build/obj/native
-BUILD_DIR_WASM = build/obj/wasm
-
-WASM_RELEASE_DIR ?= build/wasm
-TARGET_WASM ?= $(WASM_RELEASE_DIR)/wipeout.js
-TARGET_WASM_MINIMAL ?= $(WASM_RELEASE_DIR)/wipeout-minimal.js
-
-COMMON_SRC = \
-	src/wipeout/race.c \
-	src/wipeout/camera.c \
-	src/wipeout/object.c \
-	src/wipeout/droid.c \
-	src/wipeout/ui.c \
-	src/wipeout/hud.c \
-	src/wipeout/image.c \
-	src/wipeout/game.c \
-	src/wipeout/menu.c \
-	src/wipeout/main_menu.c \
-	src/wipeout/ingame_menus.c \
-	src/wipeout/title.c \
-	src/wipeout/intro.c \
-	src/wipeout/scene.c \
-	src/wipeout/ship.c \
-	src/wipeout/ship_ai.c \
-	src/wipeout/ship_player.c \
-	src/wipeout/track.c \
-	src/wipeout/weapon.c \
-	src/wipeout/particle.c \
-	src/wipeout/sfx.c \
-	src/utils.c \
-	src/types.c \
-	src/system.c \
-	src/mem.c \
-	src/input.c \
-	$(RENDERER_SRC)
-
-
-# Targets native ---------------------------------------------------------------
-
-COMMON_OBJ = $(patsubst %.c, $(BUILD_DIR)/%.o, $(COMMON_SRC))
-COMMON_DEPS = $(patsubst %.c, $(BUILD_DIR)/%.d, $(COMMON_SRC))
-
-sdl: C_FLAGS += $(shell sdl2-config --cflags)
-sdl: $(BUILD_DIR)/src/platform_sdl.o
-sdl: $(COMMON_OBJ)
-	$(CC) $^ -o $(TARGET_NATIVE) $(L_FLAGS) $(L_FLAGS_SDL)
-
-sokol: $(BUILD_DIR)/src/platform_sokol.o
-sokol: $(COMMON_OBJ)
-	$(CC) $^ -o $(TARGET_NATIVE) $(L_FLAGS) $(L_FLAGS_SOKOL)
-
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
-
-$(BUILD_DIR)/%.o: %.c
-	mkdir -p $(dir $@)
-	$(CC) $(C_FLAGS) -MMD -MP -c $< -o $@
-
--include $(COMMON_DEPS)
-
-
-# Targets wasm -----------------------------------------------------------------
-
-COMMON_OBJ_WASM = $(patsubst %.c, $(BUILD_DIR_WASM)/%.o, $(COMMON_SRC))
-COMMON_DEPS_WASM = $(patsubst %.c, $(BUILD_DIR_WASM)/%.d, $(COMMON_SRC))
-
-wasm: wasm_full wasm_minimal
-	cp src/wasm-index.html $(WASM_RELEASE_DIR)/game.html
-
-
-wasm_full: $(BUILD_DIR_WASM)/src/platform_sokol.o
-wasm_full: $(COMMON_OBJ_WASM)
-	mkdir -p $(WASM_RELEASE_DIR)
-	$(EMCC) $^ -o $(TARGET_WASM) -lGLEW -lGL \
-		-s ALLOW_MEMORY_GROWTH=1 \
-		-s ENVIRONMENT=web \
-		--preload-file wipeout
-
-wasm_minimal: $(BUILD_DIR_WASM)/src/platform_sokol.o
-wasm_minimal: $(COMMON_OBJ_WASM)
-	mkdir -p $(WASM_RELEASE_DIR)
-	$(EMCC) $^ -o $(TARGET_WASM_MINIMAL) -lGLEW -lGL \
-		-s ALLOW_MEMORY_GROWTH=1 \
-		-s ENVIRONMENT=web \
-		--preload-file wipeout \
-		--exclude-file wipeout/music \
-		--exclude-file wipeout/intro.mpeg
-
-$(BUILD_DIR_WASM):
-	mkdir -p $(BUILD_DIR_WASM)
-
-$(BUILD_DIR_WASM)/%.o: %.c
-	mkdir -p $(dir $@)
-	$(EMCC) $(C_FLAGS) -MMD -MP -c $< -o $@
-
--include $(COMMON_DEPS_WASM)
-
-
-
-
-.PHONY: clean
-clean:
-	$(RM) -rf $(BUILD_DIR) $(BUILD_DIR_WASM) $(WASM_RELEASE_DIR)
+main.exe: libSDL3.lib
+$(XBE_TITLE).exe: libSDL3.lib
