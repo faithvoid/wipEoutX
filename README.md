@@ -25,6 +25,8 @@
 
 # Planned:
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
+- [ ] Clean up source files to the bare essentials to compile for Xbox
+- [ ] Demo(?)
 
 # Not Planned:
 - N/A
