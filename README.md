@@ -8,9 +8,7 @@
 
 # Working:
 - [x] Software renderer
-- [x] Modernized SDL3 backend
-- [x] Audio
-- [x] General gameplay (able to finish the entire game in one sitting with no major issues)
+- [x] Modernized SDL3 backend which handles window rendering, audio, and input (controller + keyboard/mouse)
 - [x] Remapping keys
 - [x] In-Game Reset
 - [x] Automatic 720p/480p modes depending on the max resolution of the display
@@ -29,11 +27,10 @@
 - [ ] SDL3 fork of the mainline wipeout-rewrite engine with vibration integration
 
 # Not Planned:
-- N/A
+- [ ] Multiplayer (if a fork of this engine ever receives multiplayer, I'll gladly port it, though!)
 
 # Untested:
-- HD texture support from WipEout Fantomas Edition
-- Keyboard + Mouse support (theoretically should work out of the box as inputs are handled by SDL)
+- [ ] HD texture support from WipEout Fantomas Edition
 
 # Installation
 - Download and extract the latest release .zip file to your folder of choice
