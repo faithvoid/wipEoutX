@@ -47,6 +47,11 @@
 
 - TBA
 
+# Credits
+- PhobosLab - wipeout-rewrite engine
+- Ryzee119 - NXDK SDL3 implementation
+- XboxDev - NXDK
+
 Original README below.
 
 # wipEout Rewrite
