@@ -40,6 +40,7 @@
 - Download and extract the latest release .zip file to your folder of choice
 - Copy your "wipEout" game data from your Playstation version of wipEout, as well the required additional files from the ATI Rage PC version's "common" folder, into a folder called "wipeout". Game data is not provided with this port, nor will it ever be. Further installation instructions can be found below.
 - Place the "wipeout" folder beside the default.xbe file (selecting "no" if asked if you'd like to replace any existing wipEoutX files)
+- For Wipeout 2097 / Wipeout 3 soundtrack support, convert your existing tracks to .qoa with [qoaconv](https://github.com/phoboslab/qoa) and rename 2097's tracks to "track12-track25.qoa" and 3's tracks to "track26-track38.qoa". The game will autodetect them if available and show them in the music menu!
 - To copy/delete your save data, you can manage them from the Xbox dashboard like any retail Xbox game. Note that currently, save data is primarily saved as one file (save.dat) in the root of the save folder with additional save data generated to show the latest individual high scores, so copying over score data will only copy score data and not your championship progress.
 
 # Building (NXDK)
