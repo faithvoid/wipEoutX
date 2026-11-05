@@ -23,7 +23,6 @@
 
 # Not working:
 - [ ] Vibration (most likely requires linking to ship collision/firing events)
-- [ ] Time Attack (crashes the Xbox when hovering it, possible corrupt model file or parser in the hardware renderer)
 
 # Planned:
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
