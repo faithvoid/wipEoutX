@@ -28,6 +28,7 @@
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
 - [ ] Clean up source files to the bare essentials to compile for Xbox
 - [ ] Demo(?)
+- [ ] SDL3 fork of the mainline wipeout-rewrite engine
 
 # Not Planned:
 - N/A
