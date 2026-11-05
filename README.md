@@ -15,6 +15,7 @@
 - [x] Dynamic save icons and information depending on the last played race (ie; "Altima VII - 5000 (WPX)", with the save icon being the last played pilot's emblem)
 - [x] Xemu support as of the SDL3 rewrite
 - [x] Running from HDD, XISO or DVD/CD
+- [x] Modified menu assets ("Xbox" configuration menu, options such as "Best Times" have been moved to the main menu with fixed icons, options for vibration and save data location have been added, etc.)
 
 # Partially working:
 - [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance can definitely be improved)
