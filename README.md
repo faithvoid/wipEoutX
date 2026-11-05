@@ -22,7 +22,7 @@
 - [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance can definitely be improved)
 
 # Planned:
-- [ ] Vibration (most likely requires linking to ship collision/firing events)
+- [ ] Vibration (requires linking to ship collision/firing events in ship.c, ship_player.c, and weapons.c)
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
 - [ ] Clean up source files to the bare essentials to compile for Xbox
 - [ ] Demo(?)
