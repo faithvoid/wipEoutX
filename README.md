@@ -15,6 +15,8 @@
 - [x] In-Game Reset
 - [x] Automatic 720p/480p modes depending on the max resolution of the display
 - [x] Dynamic save icons and information depending on the last played race (ie; "Altima VII - 5000 (WPX)", with the save icon being the last played pilot's emblem)
+- [x] Xemu support as of the SDL3 rewrite
+- [x] Running from HDD, XISO or DVD/CD
 
 # Partially working:
 - [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance can definitely be improved)
@@ -37,7 +39,9 @@
 
 # Installation
 - Download and extract the latest release .zip file to your folder of choice
-- Copy your "wipEout" game data from your Playstation version of wipEout, as well the required additional files from the ATI Rage PC version's "common" folder. Game data is not provided with this port, nor will it ever be. Further installation instructions can be found below.
+- Copy your "wipEout" game data from your Playstation version of wipEout, as well the required additional files from the ATI Rage PC version's "common" folder, into a folder called "wipeout". Game data is not provided with this port, nor will it ever be. Further installation instructions can be found below.
+- Place the "wipeout" folder beside the default.xbe file (selecting "no" if asked if you'd like to replace any existing wipEoutX files)
+- To copy/delete your save data, you can manage them from the Xbox dashboard like any retail Xbox game. Note that currently, save data is primarily saved as one file (save.dat) in the root of the save folder with additional save data generated to show the latest individual high scores, so copying over score data will only copy score data and not your championship progress.
 
 # Building (NXDK)
 
