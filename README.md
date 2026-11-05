@@ -25,6 +25,7 @@
 - [ ] Clean up source files to the bare essentials to compile for Xbox
 - [ ] Demo(?)
 - [ ] SDL3 fork of the mainline wipeout-rewrite engine with vibration integration
+- [ ] Include ship alpha bleed and mine light fixes from mainline PRs
 
 # Not Planned:
 - [ ] Multiplayer (if a fork of this engine ever receives multiplayer, I'll gladly port it, though!)
