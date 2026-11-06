@@ -19,16 +19,14 @@
 
 # Partially working:
 - [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance can definitely be improved)
+- [x] [x] Wipeout 2097 + Wipeout 3 soundtrack support (when converted to .qoa, still needs boolean flag to detect if soundtrack files are found or not)
 
 # Planned:
 - [ ] Vibration (requires linking to ship collision/firing events in ship.c, ship_player.c, and weapons.c)
 - [ ] Custom 3D Xbox assets for the main menu(?) to replace PSX/DOS assets.
 - [ ] Clean up source files to the bare essentials to compile for Xbox
 - [ ] Demo(?)
-- [ ] SDL3 fork of the mainline wipeout-rewrite engine with vibration integration
-- [ ] Include ship alpha bleed and mine light fixes from mainline PRs
 - [ ] Custom soundtrack support
-- [ ] Wipeout 2097 + 3 soundtrack support
 
 # Not Planned:
 - [ ] Multiplayer (if a fork of this engine ever receives multiplayer, I'll gladly port it, though!)
