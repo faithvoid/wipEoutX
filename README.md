@@ -19,7 +19,7 @@
 
 # Partially working:
 - [x] Hardware renderer with bilinear and 16x anisotropic texture filtering (partial reimplementation of pbGL, works well, but performance can definitely be improved)
-- [x] [x] Wipeout 2097 + Wipeout 3 soundtrack support (when converted to .qoa, still needs boolean flag to detect if soundtrack files are found or not)
+- [x] Wipeout 2097 + Wipeout 3 soundtrack support (when converted to .qoa, still needs boolean flag to detect if soundtrack files are found or not)
 
 # Planned:
 - [ ] Vibration (requires linking to ship collision/firing events in ship.c, ship_player.c, and weapons.c)
